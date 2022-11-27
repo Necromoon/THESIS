@@ -1,8 +1,6 @@
 import tweepy
 import configparser
 import pandas as pd
-import matplotlib.pyplot as plt
-plt.style.use('fivethirtyeight')
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -18,10 +16,10 @@ auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth)
 
-keywords = '#DubNation'
-limit=100
+keywords = '#Example'
+limit=1000
 
-time= '2022-10-30'
+time= '2022-11-22'
 
 tweets = tweepy.Cursor(api.search_tweets, until=time, result_type='recent', lang='en', q=keywords,
                        count=100, tweet_mode='extended').items(limit)
@@ -37,4 +35,4 @@ df = pd.DataFrame(data, columns=columns)
 
 print(df)
 
-df.to_json('test.json')
+df.to_json('Example_2022_11_22.json')
